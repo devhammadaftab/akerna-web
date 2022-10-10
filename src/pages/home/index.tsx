@@ -23,13 +23,19 @@ const Home: React.FC<Props> = () => {
                         <Col md="2">{state.intaken}</Col>
                     </Row>
                 </CardHeader>
+                <Row style={{ padding: "0.5rem" }}>
+                    <Col md="4"><h6>Drink</h6></Col>
+                    <Col md="4"><h6>Description</h6></Col>
+                    <Col md="2"><h6>mg</h6></Col>
+                    <Col md="2"><h6>Drinked</h6></Col>
+                </Row>
                 {state.drinks.map(drink => {
                     let limitReached = state.user.caffieneLimit && (state.user.caffieneLimit <= (state.intaken + drink.mg));
                     return <Row style={{ padding: "0.5rem" }}>
-                        <Col style={{ padding: "1rem" }} md="4">{drink.name}</Col>
-                        <Col style={{ padding: "1rem" }} md="4">{drink.description}</Col>
-                        <Col style={{ padding: "1rem" }} md="2">{drink.mg}</Col>
-                        <Col style={{ padding: "1rem" }} md="1">
+                        <Col md="4">{drink.name}</Col>
+                        <Col md="4">{drink.description}</Col>
+                        <Col md="2">{drink.mg}</Col>
+                        <Col md="2">
                             <div>
                                 <input disabled={limitReached || drink.consumed} onClick={() => onDrink(drink.id, drink.mg)} type="checkbox" />
                             </div>
