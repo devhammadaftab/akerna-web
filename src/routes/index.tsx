@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes as Router, Route } from "react-router-dom";
+import { useStore } from 'store/index';
 import routes from './routes';
+import { getDrinks } from 'store/actions';
 
 const Routes: React.FC = () => {
 
     const [routeComponent, setRouteComponent] = useState<React.ReactElement[]>([]);
+    const { state, dispatch } = useStore();
 
     useEffect(() => {
         let newRouteComponent: React.ReactElement[] = []
@@ -21,9 +24,14 @@ const Routes: React.FC = () => {
                 }
             }
         }
-        getRoute(routes)
-        setRouteComponent(newRouteComponent)
+        initialize();
+        getRoute(routes);
+        setRouteComponent(newRouteComponent);
     }, [])
+
+    const initialize = async () => {
+        dispatch(await getDrinks());
+    }
 
     return <BrowserRouter>
         <Router>
