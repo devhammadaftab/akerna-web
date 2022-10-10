@@ -8,7 +8,6 @@ import {
     NavLink,} from 'reactstrap';
 import { RoutesConstent } from 'constants/routes';
 import { useStore } from 'store';
-import { ReactComponent as Logo } from 'assert/Freddys_Logo.svg'
 
 export interface Props {
     children: React.ReactNode

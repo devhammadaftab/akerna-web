@@ -9,18 +9,26 @@ const reducer = (state: InitialStateType, actions: ActionType) => {
                 ...state,
                 drinks: actions.payload
             }
-        case ActionConstent.SET_CONSUMED_DRINKS:
+        case ActionConstent.SET_CONSUMED_DRINK:
+            initialState.drinks = [...state.drinks];
+            let index = initialState.drinks.findIndex(drink => drink.id === actions.payload.id);
+            initialState.drinks[index] = {
+                ...initialState.drinks[index],
+                consumed: true
+            }
             return {
                 ...state,
-                consumedDrinks: [
-                    ...state.consumedDrinks,
-                    state.drinks.find(drink => drink.id === actions.payload.id)
-                ]
+                drinks: initialState.drinks
             }
         case ActionConstent.SET_USER_DATA:
             return {
                 ...state,
-                userData: actions.payload
+                user: actions.payload
+            }
+        case ActionConstent.SET_IN_TAKEN:
+            return {
+                ...state,
+                intaken: state.intaken + actions.payload
             }
         case ActionConstent.SET_APP_LOADER:
             return {

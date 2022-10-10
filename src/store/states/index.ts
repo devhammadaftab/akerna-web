@@ -2,8 +2,7 @@ import { InitialStateType } from "interfaces"
 
 const initialState: InitialStateType = {
     drinks: [],
-    consumedDrinks: [],
-    userData: {},
+    user: {},
     intaken: 0,
     loader: false
 }

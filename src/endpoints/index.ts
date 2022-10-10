@@ -1,6 +1,4 @@
-import axios from "../axios";
-
-const drinks = {
+export const drinks = {
     get: async () => {
         return await new Promise((resolve, reject) => resolve([{
                 id: 0,
@@ -32,4 +30,12 @@ const drinks = {
     }
 }
 
-export default drinks
+export const user = {
+    get: async () => {
+        return await new Promise((resolve, reject) => resolve({
+            name: "User",
+            email: "user@gmail.com",
+            caffieneLimit: 500
+        }))
+    }
+}

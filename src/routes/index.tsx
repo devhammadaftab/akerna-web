@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes as Router, Route } from "react-router-dom";
 import { useStore } from 'store/index';
 import routes from './routes';
-import { getDrinks } from 'store/actions';
+import { getDrinks, setUser } from 'store/actions';
 
 const Routes: React.FC = () => {
 
@@ -30,6 +30,7 @@ const Routes: React.FC = () => {
     }, [])
 
     const initialize = async () => {
+        dispatch(await setUser());
         dispatch(await getDrinks());
     }
 
